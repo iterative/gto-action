@@ -1,5 +1,5 @@
+#!/bin/sh -l
 # args: ref show history
-
 set +e
 
 # TODO maybe we can skip ALL commits
