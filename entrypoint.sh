@@ -19,8 +19,8 @@ if [ "$3" = "true" ]; then
 fi
 
 
-export NAME=`gto check-ref $1 --name`
-export VERSION=`gto check-ref $1 --version`
+export NAME=`gto check-ref $GITHUB_REF --name`
+export VERSION=`gto check-ref $GITHUB_REF --version`
 export EVENT=`gto check-ref $GITHUB_REF --event`
 
 
@@ -32,3 +32,5 @@ echo "::set-output name=name::$NAME"
 echo "::set-output name=stage::$STAGE"
 echo "::set-output name=version::$VERSION"
 echo "::set-output name=event::$EVENT"
+
+echo $1 $2 $3
