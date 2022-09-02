@@ -1,0 +1,34 @@
+name: 'Run GTO '
+description:
+  'Runs GTO show and populates info about triggering event in outputs.'
+author: 'Iterative, Inc.'
+inputs:
+  show:
+    description:
+      'Whether to run gto show'
+    default: "false"
+    required: false
+  history:
+    description:
+      'Whether to run gto history'
+    default: "false"
+    required: false
+outputs:
+  event:
+    description: "type of triggering event"
+  name:
+    description: ""
+  version:
+    description: ""
+  stage:
+    description: ""
+runs:
+  using: docker
+  image: "Dockerfile"
+  args:
+    - $GITHUB_REF
+    - ${{ inputs.show }}
+    - ${{ inputs.history }}
+branding:
+  icon: terminal
+  color: purple
