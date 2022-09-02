@@ -28,7 +28,7 @@ if [ "$EVENT" = "assignment" ]; then
   export STAGE=`gto check-ref $GITHUB_REF --stage`
 fi
 
-echo "::set-output name=name::$($NAME)"
-echo "::set-output name=stage::$($STAGE)"
-echo "::set-output name=version::$($VERSION)"
-echo "::set-output name=event::$($EVENT)"
+echo "::set-output name=name::$NAME"
+echo "::set-output name=stage::$STAGE"
+echo "::set-output name=version::$VERSION"
+echo "::set-output name=event::$EVENT"
