@@ -54,4 +54,10 @@ outputs:
     description: "The version of the artifact"
   stage:
     description: "The stage - if the events is a stage assignment"
+  type:
+    description: "The type of the artifact (if annotated)"
+  path:
+    description: "The path of the artifact (if annotated)"
+  description:
+    description: "The description of the artifact (if annotated)"
 ```
