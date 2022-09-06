@@ -26,14 +26,18 @@ Basic usage:
 
 ```yaml
 steps:
-    - uses: actions/checkout@v3
-    - name: gto
-      id: gto
-      uses: iterative/gto-action@main
-      with:
-        show: true
-        history: true
+  - uses: actions/checkout@v3
+  - name: gto
+    id: gto
+    uses: iterative/gto-action@main
+    with:
+      show: true
+      history: true
 ```
+
+For a complete CI example, see
+[this workflow](https://github.com/iterative/example-gto/blob/main/.github/workflows/gto-act-on-tags.yml)
+in the GTO example repo.
 
 ## Inputs
 
@@ -44,20 +48,10 @@ The following inputs are supported.
 
 ## Outputs
 
-```yaml
-outputs:
-  event:
-    description: "Type of triggering event"
-  name:
-    description: "The name of the artifact"
-  version:
-    description: "The version of the artifact"
-  stage:
-    description: "The stage - if the events is a stage assignment"
-  type:
-    description: "The type of the artifact (if annotated)"
-  path:
-    description: "The path of the artifact (if annotated)"
-  description:
-    description: "The description of the artifact (if annotated)"
-```
+- `event` - Type of triggering event
+- `name` - The name of the artifact
+- `version` - The version of the artifact
+- `stage` - The stage - if the events is a stage assignment
+- `type` - The type of the artifact (if annotated)
+- `path` - The path of the artifact (if annotated)
+- `description` - The description of the artifact (if annotated)
