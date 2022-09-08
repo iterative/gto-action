@@ -25,6 +25,7 @@ export PATH=`gto describe $NAME --path`
 export DESCRIPTION=`gto describe $NAME --description`
 
 
+echo "\n\n\n============ GTO ============\n"
 echo "The Git tag that triggered this run: $GITHUB_REF"
 
 
