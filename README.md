@@ -46,6 +46,10 @@ The following inputs are supported.
 - `show` - (optional) Whether to run `gto show`.
 - `history` - (optional) Whether to run `gto history`.
 
+Note if the Git tag that triggered the workflow conforms the GTO format,
+`gto show $NAME` and `gto history $NAME` are run each time regardless of these
+options (`$NAME` is the name of artifact Git tag refers to).
+
 ## Outputs
 
 - `event` - Type of triggering event
