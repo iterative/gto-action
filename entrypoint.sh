@@ -24,6 +24,15 @@ if [ "$EVENT" = "assignment" ]; then
 fi
 
 
+if [ $NAME ]; then
+  gto show $NAME
+  gto history $NAME
+  export TYPE=`gto describe $NAME --type`
+  export ARTIFACT_PATH=`gto describe $NAME --path`
+  export DESCRIPTION=`gto describe $NAME --description`
+fi
+
+
 if [ "$2" = "true" ]; then
   gto show
 fi
@@ -34,19 +43,10 @@ if [ "$3" = "true" ]; then
 fi
 
 
-if [ $NAME ]; then
-  gto show $NAME
-  gto history $NAME
-  export TYPE=`gto describe $NAME --type`
-  export PATH=`gto describe $NAME --path`
-  export DESCRIPTION=`gto describe $NAME --description`
-fi
-
-
 echo "::set-output name=name::$NAME"
 echo "::set-output name=stage::$STAGE"
 echo "::set-output name=version::$VERSION"
 echo "::set-output name=event::$EVENT"
 echo "::set-output name=type::$TYPE"
-echo "::set-output name=path::$PATH"
+echo "::set-output name=path::$ARTIFACT_PATH"
 echo "::set-output name=description::$DESCRIPTION"
