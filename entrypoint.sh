@@ -10,6 +10,10 @@ git fetch --all --prune --tags
 git pull --all
 
 
+echo "\n\n\n============ GTO ============\n"
+echo "The Git tag that triggered this run: $GITHUB_REF"
+
+
 export NAME=`gto check-ref $GITHUB_REF --name`
 export VERSION=`gto check-ref $GITHUB_REF --version`
 export EVENT=`gto check-ref $GITHUB_REF --event`
@@ -20,21 +24,6 @@ if [ "$EVENT" = "assignment" ]; then
 fi
 
 
-export TYPE=`gto describe $NAME --type`
-export PATH=`gto describe $NAME --path`
-export DESCRIPTION=`gto describe $NAME --description`
-
-
-echo "\n\n\n============ GTO ============\n"
-echo "The Git tag that triggered this run: $GITHUB_REF"
-
-
-if [ $NAME ]; then
-  gto show $NAME
-  gto history $NAME
-fi
-
-
 if [ "$2" = "true" ]; then
   gto show
 fi
@@ -42,6 +31,15 @@ fi
 
 if [ "$3" = "true" ]; then
   gto history
+fi
+
+
+if [ $NAME ]; then
+  gto show $NAME
+  gto history $NAME
+  export TYPE=`gto describe $NAME --type`
+  export PATH=`gto describe $NAME --path`
+  export DESCRIPTION=`gto describe $NAME --description`
 fi
 
 
