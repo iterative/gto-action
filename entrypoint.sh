@@ -10,6 +10,10 @@ git fetch --all --prune --tags
 git pull --all
 
 
+echo "\n\n\n============ GTO ============\n"
+echo "The Git tag that triggered this run: $GITHUB_REF"
+
+
 export NAME=`gto check-ref $GITHUB_REF --name`
 export VERSION=`gto check-ref $GITHUB_REF --version`
 export EVENT=`gto check-ref $GITHUB_REF --event`
@@ -20,18 +24,12 @@ if [ "$EVENT" = "assignment" ]; then
 fi
 
 
-export TYPE=`gto describe $NAME --type`
-export PATH=`gto describe $NAME --path`
-export DESCRIPTION=`gto describe $NAME --description`
-
-
-echo "\n\n\n============ GTO ============\n"
-echo "The Git tag that triggered this run: $GITHUB_REF"
-
-
 if [ $NAME ]; then
   gto show $NAME
   gto history $NAME
+  export TYPE=`gto describe $NAME --type`
+  export ARTIFACT_PATH=`gto describe $NAME --path`
+  export DESCRIPTION=`gto describe $NAME --description`
 fi
 
 
@@ -50,5 +48,5 @@ echo "::set-output name=stage::$STAGE"
 echo "::set-output name=version::$VERSION"
 echo "::set-output name=event::$EVENT"
 echo "::set-output name=type::$TYPE"
-echo "::set-output name=path::$PATH"
+echo "::set-output name=path::$ARTIFACT_PATH"
 echo "::set-output name=description::$DESCRIPTION"
