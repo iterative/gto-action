@@ -10,7 +10,7 @@ git fetch --all --prune --tags
 git pull --all
 
 
-echo "\n\n\n============ GTO ============\n"
+echo "\n============ GTO ============\n"
 echo "The Git tag that triggered this run: $GITHUB_REF"
 
 
@@ -25,11 +25,25 @@ fi
 
 
 if [ $NAME ]; then
-  gto show $NAME
-  gto history $NAME
   export TYPE=`gto describe $NAME --type`
   export ARTIFACT_PATH=`gto describe $NAME --path`
   export DESCRIPTION=`gto describe $NAME --description`
+fi
+
+
+echo "After Git tag parsing, the following outputs are set:"
+echo "event: $EVENT"
+echo "name: $NAME"
+echo "version: $VERSION"
+echo "stage: $STAGE"
+echo "type: $TYPE"
+echo "path: $ARTIFACT_PATH"
+echo "description: $DESCRIPTION"
+
+
+if [ $NAME ]; then
+  gto show $NAME
+  gto history $NAME
 fi
 
 
