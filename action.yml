@@ -13,6 +13,11 @@ inputs:
       'Whether to run gto history'
     default: "false"
     required: false
+  print-outputs:
+    description:
+      'Whether to print all action outputs'
+    default: "true"
+    required: false
 outputs:
   event:
     description: "Type of triggering event"
@@ -35,6 +40,7 @@ runs:
     - $GITHUB_REF
     - ${{ inputs.show }}
     - ${{ inputs.history }}
+    - ${{ inputs.print-outputs }}
 branding:
   icon: terminal
   color: purple
