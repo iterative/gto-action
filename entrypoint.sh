@@ -31,17 +31,6 @@ if [ $NAME ]; then
 fi
 
 
-echo "\nAfter Git tag parsing, the following outputs are set:"
-echo "  event: $EVENT"
-echo "  name: $NAME"
-echo "  version: $VERSION"
-echo "  stage: $STAGE"
-echo "  type: $TYPE"
-echo "  path: $ARTIFACT_PATH"
-echo "  description: $DESCRIPTION"
-echo "\n"
-
-
 if [ $NAME ]; then
   gto show $NAME
   gto history $NAME
@@ -66,4 +55,9 @@ echo "type=$TYPE" >> $GITHUB_OUTPUT
 echo "path=$ARTIFACT_PATH" >> $GITHUB_OUTPUT
 echo "description=$DESCRIPTION" >> $GITHUB_OUTPUT
 
-cat $GITHUB_OUTPUT
+
+if [ "$4" = "true" ]; then
+  echo "\nAfter Git tag parsing, the following outputs are set:"
+  cat $GITHUB_OUTPUT
+  echo "\n"
+fi
