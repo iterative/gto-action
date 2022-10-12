@@ -33,7 +33,7 @@ steps:
     with:
       show: true
       history: true
-      verbose: true
+      print-outputs: true
 ```
 
 For a complete CI example, see
@@ -46,7 +46,7 @@ The following inputs are supported.
 
 - `show` - (optional) Whether to run `gto show`.
 - `history` - (optional) Whether to run `gto history`.
-- `verbose` - (optional) Whether to print action outputs.
+- `print-outputs` - (optional) Whether to print action outputs.
 
 Note if the Git tag that triggered the workflow conforms the GTO format,
 `gto show $NAME` and `gto history $NAME` are run each time regardless of these
