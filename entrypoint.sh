@@ -58,10 +58,12 @@ if [ "$3" = "true" ]; then
 fi
 
 
-echo "::set-output name=name::$NAME"
-echo "::set-output name=stage::$STAGE"
-echo "::set-output name=version::$VERSION"
-echo "::set-output name=event::$EVENT"
-echo "::set-output name=type::$TYPE"
-echo "::set-output name=path::$ARTIFACT_PATH"
-echo "::set-output name=description::$DESCRIPTION"
+echo "name=$NAME" >> $GITHUB_OUTPUT
+echo "stage=$STAGE" >> $GITHUB_OUTPUT
+echo "version=$VERSION" >> $GITHUB_OUTPUT
+echo "event=$EVENT" >> $GITHUB_OUTPUT
+echo "type=$TYPE" >> $GITHUB_OUTPUT
+echo "path=$ARTIFACT_PATH" >> $GITHUB_OUTPUT
+echo "description=$DESCRIPTION" >> $GITHUB_OUTPUT
+
+cat $GITHUB_OUTPUT
