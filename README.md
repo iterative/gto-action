@@ -27,13 +27,8 @@ Basic usage:
 ```yaml
 steps:
   - uses: actions/checkout@v3
-  - name: gto
-    id: gto
-    uses: iterative/gto-action@main
-    with:
-      show: true
-      history: true
-      print-outputs: true
+  - id: gto
+    uses: iterative/gto-action@v1
 ```
 
 For a complete CI example, see
