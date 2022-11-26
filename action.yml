@@ -6,12 +6,12 @@ inputs:
   show:
     description:
       'Whether to run gto show'
-    default: "false"
+    default: "true"
     required: false
   history:
     description:
       'Whether to run gto history'
-    default: "false"
+    default: "true"
     required: false
   print-outputs:
     description:
