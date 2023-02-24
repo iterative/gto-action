@@ -2,48 +2,50 @@
 # args: ref show history
 set +e
 
+git config --global --add safe.directory /github/workspace
+
 # TODO maybe we can skip ALL commits
 # https://stackoverflow.com/questions/10312521/how-to-fetch-all-git-branches
 git tag | xargs git tag -d
 for remote in `git branch -r`; do git branch --track ${remote#origin/} $remote; done
 git fetch --all --prune --tags
-git pull --all
+git pull --all --prune --tags
 
 
 echo "\n\n============ GTO ============\n"
 echo "The Git tag that triggered this run: $GITHUB_REF"
 
 
-export NAME=`gto --tb check-ref $GITHUB_REF --name`
-export VERSION=`gto --tb check-ref $GITHUB_REF --version`
-export EVENT=`gto --tb check-ref $GITHUB_REF --event`
+export NAME=`gto check-ref $GITHUB_REF --name`
+export VERSION=`gto check-ref $GITHUB_REF --version`
+export EVENT=`gto check-ref $GITHUB_REF --event`
 
 
 if [ "$EVENT" = "assignment" ]; then
-  export STAGE=`gto --tb check-ref $GITHUB_REF --stage`
+  export STAGE=`gto check-ref $GITHUB_REF --stage`
 fi
 
 
 if [ $NAME ]; then
-  export TYPE=`gto --tb describe $NAME --type`
-  export ARTIFACT_PATH=`gto --tb describe $NAME --path`
-  export DESCRIPTION=`gto --tb describe $NAME --description`
+  export TYPE=`gto describe $NAME --type`
+  export ARTIFACT_PATH=`gto describe $NAME --path`
+  export DESCRIPTION=`gto describe $NAME --description`
 fi
 
 
 if [ $NAME ]; then
-  gto --tb show $NAME
-  gto --tb history $NAME
+  gto show $NAME
+  gto history $NAME
 fi
 
 
 if [ "$2" = "true" ]; then
-  gto --tb show
+  gto show
 fi
 
 
 if [ "$3" = "true" ]; then
-  gto --tb history
+  gto history
 fi
 
 
