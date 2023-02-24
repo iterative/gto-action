@@ -2,6 +2,8 @@
 # args: ref show history
 set +e
 
+git config --global --add safe.directory /github/workspace
+
 # TODO maybe we can skip ALL commits
 # https://stackoverflow.com/questions/10312521/how-to-fetch-all-git-branches
 git tag | xargs git tag -d
