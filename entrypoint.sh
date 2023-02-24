@@ -14,36 +14,36 @@ echo "\n\n============ GTO ============\n"
 echo "The Git tag that triggered this run: $GITHUB_REF"
 
 
-export NAME=`gto check-ref $GITHUB_REF --name`
-export VERSION=`gto check-ref $GITHUB_REF --version`
-export EVENT=`gto check-ref $GITHUB_REF --event`
+export NAME=`gto --tb check-ref $GITHUB_REF --name`
+export VERSION=`gto --tb check-ref $GITHUB_REF --version`
+export EVENT=`gto --tb check-ref $GITHUB_REF --event`
 
 
 if [ "$EVENT" = "assignment" ]; then
-  export STAGE=`gto check-ref $GITHUB_REF --stage`
+  export STAGE=`gto --tb check-ref $GITHUB_REF --stage`
 fi
 
 
 if [ $NAME ]; then
-  export TYPE=`gto describe $NAME --type`
-  export ARTIFACT_PATH=`gto describe $NAME --path`
-  export DESCRIPTION=`gto describe $NAME --description`
+  export TYPE=`gto --tb describe $NAME --type`
+  export ARTIFACT_PATH=`gto --tb describe $NAME --path`
+  export DESCRIPTION=`gto --tb describe $NAME --description`
 fi
 
 
 if [ $NAME ]; then
-  gto show $NAME
-  gto history $NAME
+  gto --tb show $NAME
+  gto --tb history $NAME
 fi
 
 
 if [ "$2" = "true" ]; then
-  gto show
+  gto --tb show
 fi
 
 
 if [ "$3" = "true" ]; then
-  gto history
+  gto --tb history
 fi
 
 
