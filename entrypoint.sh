@@ -7,7 +7,7 @@ set +e
 git tag | xargs git tag -d
 for remote in `git branch -r`; do git branch --track ${remote#origin/} $remote; done
 git fetch --all --prune --tags
-git pull --all
+git pull --all --prune --tags
 
 
 echo "\n\n============ GTO ============\n"
