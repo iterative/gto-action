@@ -8,7 +8,6 @@ git config --global --add safe.directory /github/workspace
 # https://stackoverflow.com/questions/10312521/how-to-fetch-all-git-branches
 git tag | xargs git tag -d
 for remote in `git branch -r`; do git branch --track ${remote#origin/} $remote; done
-git fetch --all --prune --tags
 git pull --all --prune --tags
 
 
