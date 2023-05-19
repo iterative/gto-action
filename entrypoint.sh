@@ -26,9 +26,7 @@ fi
 
 
 if [ $NAME ]; then
-  export TYPE=`gto describe $NAME --type`
-  export ARTIFACT_PATH=`gto describe $NAME --path`
-  export DESCRIPTION=`gto describe $NAME --description`
+  python read_annotation.py
 fi
 
 

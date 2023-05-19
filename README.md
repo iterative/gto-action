@@ -17,10 +17,15 @@ the Git tag that triggered CI and finds out what this tag does, whether it's a
 version registration, stage assignment or something else. This allows you to act
 accordingly upon this event.
 
+- `v1` of this action relied on GTO-based annotations (written to
+  `artifacts.yaml`). Now deprecated.
+- `v2` of this action relies on DVC-based annotations
+  ([written to `dvc.yaml`](https://dvc.org/doc/user-guide/project-structure/dvcyaml-files#artifacts)).
+
 ## Usage
 
-This action can be run on `ubuntu-latest` only for now (please let us know if
-you need `macos-latest` or `windows-latest`).
+This action can be run on `ubuntu-latest` only for now (let us know if you need
+`macos-latest` or `windows-latest`).
 
 Basic usage:
 
@@ -28,7 +33,7 @@ Basic usage:
 steps:
   - uses: actions/checkout@v3
   - id: gto
-    uses: iterative/gto-action@v1
+    uses: iterative/gto-action@v2
 ```
 
 For a complete CI example, see
