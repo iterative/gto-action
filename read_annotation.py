@@ -17,19 +17,21 @@ while not dvcroot or path:
     path = os.path.dirname(path)
 
 if not dvcroot:
+    print("DVC root not found. Won't check for annotations.")
     exit
 
-os.chdir(dvcroot)
 subdir = subdir[len(dvcroot):]
-
-r = Repo(".")
-
+r = Repo(dvcroot)
 annotation = r.artifacts.read().get(os.path.join(subdir, "dvc.yaml"), {}).get(subname, None)
 
 if annotation:
+    export = []
     if value := annotation.desc:
-        os.environ["DESCRIPTION"] = value
+        export.append(f'export DESCRIPTION="{value}"\n')
     if value := annotation.path:
-        os.environ["ARTIFACT_PATH"] = value
+        export.append(f'export ARTIFACT_PATH="{value}"\n')
     if value := annotation.type:
-        os.environ["TYPE"] = value
+        export.append(f'export TYPE="{value}"\n')
+
+    with open("set_vars.sh", "w") as f:
+        f.writelines(export)
