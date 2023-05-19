@@ -27,7 +27,7 @@ fi
 
 if [ $NAME ]; then
   python /read_annotation.py
-  test -e set_vars.sh && source set_vars.sh
+  test -e set_vars.sh && sh set_vars.sh
 fi
 
 
