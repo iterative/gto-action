@@ -1,7 +1,7 @@
 import os
 from gto.api import check_ref
 from gto.constants import SEPARATOR_IN_NAME
-from dvc import Repo
+from dvc.repo import Repo
 
 name = check_ref(".", os.environ["GITHUB_REF"])[0].artifact
 if SEPARATOR_IN_NAME in name:
@@ -22,7 +22,7 @@ if not dvcroot:
 os.chdir(dvcroot)
 subdir = subdir[len(dvcroot):]
 
-r = Repo.Repo(".")
+r = Repo(".")
 
 annotation = r.artifacts.read().get(os.path.join(subdir, "dvc.yaml"), {}).get(subname, None)
 
