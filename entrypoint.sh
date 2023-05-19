@@ -26,7 +26,7 @@ fi
 
 
 if [ $NAME ]; then
-  python read_annotation.py
+  python /read_annotation.py
 fi
 
 
