@@ -26,8 +26,9 @@ fi
 
 
 if [ $NAME ]; then
-  python /read_annotation.py
-  test -e set_vars.sh && . set_vars.sh
+  export TYPE=$(python /read_annotation.py type)
+  export DESC=$(python /read_annotation.py desc)
+  export ARTIFACT_PATH=$(python /read_annotation.py path)
 fi
 
 
@@ -53,7 +54,7 @@ echo "version=$VERSION" >> $GITHUB_OUTPUT
 echo "event=$EVENT" >> $GITHUB_OUTPUT
 echo "type=$TYPE" >> $GITHUB_OUTPUT
 echo "path=$ARTIFACT_PATH" >> $GITHUB_OUTPUT
-echo "description=$DESCRIPTION" >> $GITHUB_OUTPUT
+echo "description=$DESC" >> $GITHUB_OUTPUT
 
 
 if [ "$4" = "true" ]; then
