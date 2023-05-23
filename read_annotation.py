@@ -9,7 +9,11 @@ parser = argparse.ArgumentParser(description='Process some data.')
 parser.add_argument('arg', choices=['path', 'desc', 'type'], help='An argument to specify output type')
 args = parser.parse_args()
 
-name = check_ref(".", os.environ["GITHUB_REF"])[0].artifact
+events = check_ref(".", os.environ["GITHUB_REF"])
+if not events:
+    exit(0)
+    
+name = events[0].artifact
 if SEPARATOR_IN_NAME in name:
     subdir, subname = name.split(SEPARATOR_IN_NAME)
 else:
@@ -17,10 +21,14 @@ else:
 
 path = subdir
 dvcroot = None
-while not dvcroot or path:
+while not dvcroot and path:
     if os.path.isdir(os.path.join(path, Repo.DVC_DIR)):
         dvcroot = path
     path = os.path.dirname(path)
+
+# checking if the top directory is a dvc repo
+if not dvcroot and os.path.isdir(os.path.join(path, Repo.DVC_DIR)):
+    dvcroot = path
 
 if not dvcroot:
     exit(0)
