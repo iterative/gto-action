@@ -1,3 +1,4 @@
+import sys
 import os
 import argparse
 from gto.api import check_ref
@@ -11,6 +12,7 @@ args = parser.parse_args()
 
 events = check_ref(".", os.environ["GITHUB_REF"])
 if not events:
+    print("No events found", file=sys.stderr)
     exit(0)
     
 name = events[0].artifact
@@ -30,7 +32,8 @@ while not dvcroot and path:
 if not dvcroot and os.path.isdir(os.path.join(path, Repo.DVC_DIR)):
     dvcroot = path
 
-if not dvcroot:
+if dvcroot is None:
+    print("No dvcroot found", file=sys.stderr)
     exit(0)
 
 subdir = subdir[len(dvcroot):]
@@ -38,6 +41,7 @@ r = Repo(dvcroot)
 annotation = r.artifacts.read().get(os.path.join(subdir, "dvc.yaml"), {}).get(subname, None)
 
 if not annotation:
+    print("No annotation found", file=sys.stderr)
     exit(0)
 
 if args.arg == 'desc':
