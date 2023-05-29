@@ -9,7 +9,6 @@ your Git repository into an Artifact Registry. Main features:
   artifact or it's readiness to be consumed by a specific environment.
 - GitOps: Signal CI/CD automation or other downstream systems to act upon these
   new versions and lifecycle updates.
-- Enrichments: Annotate and query artifact metadata with additional information.
 
 The [iterative/gto-action](https://github.com/iterative/gto-action) action is a
 Docker-based action that runs [GTO](https://github.com/iterative/gto) against
