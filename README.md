@@ -44,6 +44,7 @@ in the GTO example repo.
 The following inputs are supported.
 
 - `download` - (optional) Whether to run `dvc pull` on the artifacts' path. Experimental, subject to change.
+  If set to true, add necessary secrets that DVC will need to access the remote.
 - `show` - (optional) Whether to run `gto show`.
 - `history` - (optional) Whether to run `gto history`.
 - `print-outputs` - (optional) Whether to print action outputs.
