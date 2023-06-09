@@ -49,6 +49,7 @@ steps:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 ```
 
+After pulling, the artifact can be found at `${{ steps.gto.outputs.path }}`.
 For a complete CI example, see
 [this workflow](https://github.com/iterative/example-gto/blob/main/.github/workflows/gto-act-on-tags.yml)
 in the GTO example repo.
