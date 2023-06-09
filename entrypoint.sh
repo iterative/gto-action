@@ -1,6 +1,5 @@
 #!/bin/sh -l
 # args: ref show history
-set +e
 
 git config --global --add safe.directory /github/workspace
 
@@ -61,4 +60,13 @@ if [ "$4" = "true" ]; then
   echo "\nAfter Git tag parsing, the following outputs are set:"
   cat $GITHUB_OUTPUT
   echo "\n"
+fi
+
+if [ "$5" = "true" ]; then
+  if [ -z "$ARTIFACT_PATH" ]; then
+    echo "\nAnnotation is not found, can't `dvc pull` the artifact. Exiting the action."
+    exit 1
+  fi
+  dvc pull $ARTIFACT_PATH
+  echo "\nThe artifact now can be found at $ARTIFACT_PATH. Use action  outputs`
 fi

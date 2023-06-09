@@ -43,6 +43,7 @@ in the GTO example repo.
 
 The following inputs are supported.
 
+- `download` - (optional) Whether to run `dvc pull` on the artifacts' path. Experimental, subject to change.
 - `show` - (optional) Whether to run `gto show`.
 - `history` - (optional) Whether to run `gto history`.
 - `print-outputs` - (optional) Whether to print action outputs.
