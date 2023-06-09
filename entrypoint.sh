@@ -64,9 +64,9 @@ fi
 
 if [ "$5" = "true" ]; then
   if [ -z "$ARTIFACT_PATH" ]; then
-    echo "\nAnnotation is not found, can't `dvc pull` the artifact. Exiting the action."
+    echo "\nAnnotation is not found, can't "dvc pull" the artifact. Exiting the action."
     exit 1
   fi
   dvc pull $ARTIFACT_PATH
-  echo "\nThe artifact now can be found at $ARTIFACT_PATH. Use action  outputs`
+  echo "\nThe artifact now can be found at its path. Use action outputs to find it out.`
 fi
