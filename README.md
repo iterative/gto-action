@@ -35,6 +35,20 @@ steps:
     uses: iterative/gto-action@v2
 ```
 
+Pulling artifact with DVC:
+
+```yaml
+steps:
+  - uses: actions/checkout@v3
+  - id: gto
+    uses: iterative/gto-action@v2
+    with:
+      pull: true
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+```
+
 For a complete CI example, see
 [this workflow](https://github.com/iterative/example-gto/blob/main/.github/workflows/gto-act-on-tags.yml)
 in the GTO example repo.
