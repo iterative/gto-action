@@ -68,5 +68,5 @@ if [ "$5" = "true" ]; then
     exit 1
   fi
   dvc pull $ARTIFACT_PATH
-  echo "\nThe artifact now can be found at its path. Use action outputs to find it out.`
+  echo "\nThe artifact now can be found at its path. Use action outputs to find it out."
 fi
