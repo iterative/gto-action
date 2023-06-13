@@ -3,6 +3,11 @@ description:
   'Runs GTO show and populates info about triggering event in outputs.'
 author: 'Iterative, Inc.'
 inputs:
+  pull:
+    description:
+      'Run `dvc pull` on the artifact'
+    default: "false"
+    required: false
   show:
     description:
       'Whether to run gto show'
@@ -41,6 +46,7 @@ runs:
     - ${{ inputs.show }}
     - ${{ inputs.history }}
     - ${{ inputs.print-outputs }}
+    - ${{ inputs.pull }}
 branding:
   icon: terminal
   color: purple

@@ -35,6 +35,21 @@ steps:
     uses: iterative/gto-action@v2
 ```
 
+Pulling artifact with DVC:
+
+```yaml
+steps:
+  - uses: actions/checkout@v3
+  - id: gto
+    uses: iterative/gto-action@v2
+    with:
+      pull: true
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+```
+
+After pulling, the artifact can be found at `${{ steps.gto.outputs.path }}`.
 For a complete CI example, see
 [this workflow](https://github.com/iterative/example-gto/blob/main/.github/workflows/gto-act-on-tags.yml)
 in the GTO example repo.
@@ -43,6 +58,8 @@ in the GTO example repo.
 
 The following inputs are supported.
 
+- `pull` - (optional) Whether to run `dvc pull` on the artifacts' path. 
+  If set to true, add necessary secrets that DVC will need to access the remote.
 - `show` - (optional) Whether to run `gto show`.
 - `history` - (optional) Whether to run `gto history`.
 - `print-outputs` - (optional) Whether to print action outputs.
