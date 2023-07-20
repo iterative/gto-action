@@ -1,6 +1,8 @@
 #!/bin/sh -l
 # args: ref show history
 
+set -eu
+
 git config --global --add safe.directory /github/workspace
 
 # TODO maybe we can skip ALL commits
