@@ -15,11 +15,5 @@ jobs:
       - name: Verify that the Docker image for the action builds
         run: docker build . --file Dockerfile
 
-      - name: Use action on this repo
-        env: 
-           GITHUB_REF: model@v1.0.1
+      - name: Use action on this repo (basic integration)
         uses: ./
-        with:
-          show: true
-          history: true
-          print-outputs: true
