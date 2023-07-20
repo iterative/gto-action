@@ -16,6 +16,8 @@ jobs:
         run: docker build . --file Dockerfile
 
       - name: Use action on this repo
+        env: 
+           GITHUB_REF: model@v1.0.1
         uses: ./
         with:
           show: true
