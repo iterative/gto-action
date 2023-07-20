@@ -14,3 +14,10 @@ jobs:
 
       - name: Verify that the Docker image for the action builds
         run: docker build . --file Dockerfile
+
+      - name: Use action on this repo
+        uses: ./
+        with:
+          show: true
+          history: true
+          print-outputs: true
