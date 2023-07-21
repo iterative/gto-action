@@ -10,7 +10,7 @@ git config --global --add safe.directory /github/workspace
 git tag | xargs git tag -d
 for remote in `git branch -r`; do 
      git branch --track ${remote#origin/} $remote || \
-       echo "Failed to track `$remote` brach: already tracked or doesn't exist."
+       echo "Failed to track `$remote` branch: already tracked or doesn't exist."
 done
 git fetch --all --prune --tags
 
