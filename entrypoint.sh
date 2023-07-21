@@ -9,7 +9,7 @@ git config --global --add safe.directory /github/workspace
 # https://stackoverflow.com/questions/10312521/how-to-fetch-all-git-branches
 git tag | xargs git tag -d
 for remote in `git branch -r`; do 
-   if [ ${remote#origin/} != $(git branch --show-current) ]; then
+   if [ "${remote#origin/}" != "$(git branch --show-current)" ]; then
      git branch --track ${remote#origin/} $remote
    fi
 done
