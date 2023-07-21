@@ -12,7 +12,7 @@ for remote in `git branch -r`; do
      git branch --track ${remote#origin/} $remote || \
        echo "Failed to track `$remote` brach: already tracked or doesn't exist."
 done
-git pull --all --prune --tags
+git fetch --all --prune --tags
 
 
 echo "\n\n============ GTO ============\n"
