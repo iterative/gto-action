@@ -1,7 +1,7 @@
 #!/bin/sh -l
 # args: ref show history
 
-set -eu
+set -eux
 
 git config --global --add safe.directory /github/workspace
 
