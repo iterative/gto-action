@@ -8,6 +8,7 @@ git config --global --add safe.directory /github/workspace
 # TODO maybe we can skip ALL commits
 # https://stackoverflow.com/questions/10312521/how-to-fetch-all-git-branches
 git tag | xargs git tag -d
+echo "git branch -r"
 for remote in `git branch -r`; do 
    if [ "${remote#origin/}" != "$(git branch --show-current)" ]; then
      git branch --track ${remote#origin/} $remote
