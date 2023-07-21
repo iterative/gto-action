@@ -1,0 +1,19 @@
+name: 'Linting and Testing'
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  run-tests:
+    name: 'Run Tests'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Verify that the Docker image for the action builds
+        run: docker build . --file Dockerfile
+
+      - name: Use action on this repo (basic integration)
+        uses: ./
