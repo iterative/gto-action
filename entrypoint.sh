@@ -16,7 +16,7 @@ git fetch --all --prune --tags
 
 
 echo "\n\n============ GTO ============\n"
-echo "The Git tag that triggered this run: $GITHUB_REF"
+echo "The Git ref that triggered this run: $GITHUB_REF"
 
 
 export NAME=`gto check-ref $GITHUB_REF --name`
