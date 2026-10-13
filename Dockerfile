@@ -1,4 +1,4 @@
-FROM python:3.14-slim
+FROM python:3.15-slim
 
 RUN apt-get update && apt-get upgrade -y && apt-get install -y git && apt-get clean
 COPY entrypoint.sh /entrypoint.sh
